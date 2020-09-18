@@ -1,0 +1,16 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '10.0'
+
+# Uncomment this line if you're using Swift
+use_frameworks!
+
+source 'git@github.com:olllo123/PrivateSinchFrameworksRepo.git'
+source 'https://cdn.cocoapods.org/'
+
+workspace 'iOS-Verification-SDK'
+project 'VerificationSample/VerificationSample.xcodeproj'
+
+target 'VerificationSample' do
+  project 'VerificationSample/VerificationSample.xcodeproj'
+  pod 'Verification'
+end
