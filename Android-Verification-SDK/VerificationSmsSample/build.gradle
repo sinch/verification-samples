@@ -49,6 +49,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.sinch.android.sdk.verification:verification-sms:2.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.xSerialization}"
     implementation "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -57,6 +58,4 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     implementation "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     implementation "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-    implementation "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 }

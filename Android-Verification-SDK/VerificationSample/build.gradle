@@ -50,6 +50,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'com.sinch.android.sdk.verification:verification-all:2.0.0'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
     implementation "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -58,14 +60,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     implementation "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     implementation "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-    implementation "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
-    debugImplementation 'com.facebook.soloader:soloader:0.9.0'
-    debugImplementation 'com.facebook.flipper:flipper:0.41.0'
-    debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.41.0'
-
-    releaseImplementation 'com.facebook.flipper:flipper-noop:0.41.0'
 
     testImplementation "junit:junit:${Versions.jUnit}"
 

@@ -8,6 +8,9 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url  "https://sinch.bintray.com/com.sinch.android.sdk.verification"
+        }
     }
 
     dependencies {
@@ -26,20 +29,19 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url  "https://sinch.bintray.com/com.sinch.android.sdk.verification"
+        }
     }
 }
 
 subprojects {
     apply plugin: 'com.android.application'
-
     android {
-
         defaultConfig {
-            buildConfigField "String", "APP_KEY", "***"
+            buildConfigField "String", "APP_KEY", '"***"'
         }
-
     }
-
 }
 
 task clean(type: Delete) {
