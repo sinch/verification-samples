@@ -11,6 +11,8 @@ import Verification
 
 class VerificationController: UIViewController {
     
+    private static let AppKey = "***"
+    
     @IBOutlet weak var phoneNumberTextField: PhoneNumberUITextField!
     @IBOutlet weak var envNameLabel: UILabel!
     
@@ -38,16 +40,10 @@ class VerificationController: UIViewController {
     
     private weak var verificationDialogController: VerificationDialogController?
     private var verification: Verification?
-    private var selectedEnv: Environment = Environments[0] {
-        didSet {
-            envNameLabel.text = selectedEnv.name
-            Constants.Api.userDefinedDomain = selectedEnv.domain
-        }
-    }
     
     private var globalConfig: SinchGlobalConfig {
         return SinchGlobalConfig.Builder.instance()
-            .authorizationMethod(AppKeyAuthorizationMethod(appKey: selectedEnv.appKey))
+            .authorizationMethod(AppKeyAuthorizationMethod(appKey: VerificationController.AppKey))
             .build()
     }
     
@@ -75,7 +71,6 @@ class VerificationController: UIViewController {
         [phoneNumberTextField, customField, referenceField, acceptedLanguagesField].forEach {
             $0?.delegate = self
         }
-        envNameLabel.addInteraction(UIContextMenuInteraction(delegate: self))
     }
     
     @IBAction func didTapInitializeButton(_ sender: Any) {
@@ -193,23 +188,9 @@ class VerificationController: UIViewController {
     }
 }
 
-extension VerificationController: UIContextMenuInteractionDelegate {
-    
-    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { elem in
-            let children = Environments.map { item in
-                UIAction(title: item.name, state: (self.selectedEnv == item) ? .on : .off, handler: { _ in self.selectedEnv = item })
-            }
-            return UIMenu(title: "Envirnoments", options: .displayInline, children: children)
-        })
-    }
-}
-
 extension VerificationController: VerificationListener {
     
     func onVerified() {
-        print("OnVerified called")
         verificationDialogController?.showVerifiedMessage()
     }
     

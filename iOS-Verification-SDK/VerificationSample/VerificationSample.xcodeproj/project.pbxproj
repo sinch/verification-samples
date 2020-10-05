@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		B17233F124C5871F00E35C9E /* VerificationDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17233F024C5871F00E35C9E /* VerificationDialogController.swift */; };
 		B17233FF24C6C4B100E35C9E /* MethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17233FE24C6C4B100E35C9E /* MethodButton.swift */; };
 		B172340124C6C62300E35C9E /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172340024C6C62300E35C9E /* UIColorExtensions.swift */; };
-		B1D698B724EA86FF00AC4CA8 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D698B624EA86FF00AC4CA8 /* Environments.swift */; };
 		B1EF430924B46C5F009BE30C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF430824B46C5F009BE30C /* AppDelegate.swift */; };
 		B1EF430B24B46C5F009BE30C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF430A24B46C5F009BE30C /* SceneDelegate.swift */; };
 		B1EF430D24B46C5F009BE30C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF430C24B46C5F009BE30C /* VerificationController.swift */; };
@@ -20,12 +19,24 @@
 		F45DA27586B62B181D591B95 /* Pods_VerificationSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBFC7B91A1F1AE8FFC7A762 /* Pods_VerificationSample.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B1BF007C252B2DB8000C17D9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4A0A77DE58183A197AEF6A05 /* Pods-VerificationSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerificationSample.debug.xcconfig"; path = "Target Support Files/Pods-VerificationSample/Pods-VerificationSample.debug.xcconfig"; sourceTree = "<group>"; };
 		B17233F024C5871F00E35C9E /* VerificationDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationDialogController.swift; sourceTree = "<group>"; };
 		B17233FE24C6C4B100E35C9E /* MethodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodButton.swift; sourceTree = "<group>"; };
 		B172340024C6C62300E35C9E /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		B1D698B624EA86FF00AC4CA8 /* Environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
 		B1EF430524B46C5F009BE30C /* VerificationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerificationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EF430824B46C5F009BE30C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1EF430A24B46C5F009BE30C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +92,6 @@
 				B1EF431624B46C60009BE30C /* Info.plist */,
 				B17233FE24C6C4B100E35C9E /* MethodButton.swift */,
 				B172340024C6C62300E35C9E /* UIColorExtensions.swift */,
-				B1D698B624EA86FF00AC4CA8 /* Environments.swift */,
 			);
 			path = VerificationSample;
 			sourceTree = "<group>";
@@ -115,7 +125,8 @@
 				B1EF430124B46C5F009BE30C /* Sources */,
 				B1EF430224B46C5F009BE30C /* Frameworks */,
 				B1EF430324B46C5F009BE30C /* Resources */,
-				9ACA4AE6B17FF202A02F0FF8 /* [CP] Embed Pods Frameworks */,
+				B1BF007C252B2DB8000C17D9 /* Embed Frameworks */,
+				44FC0DDB90C094E7816BD253 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,7 +184,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9ACA4AE6B17FF202A02F0FF8 /* [CP] Embed Pods Frameworks */ = {
+		44FC0DDB90C094E7816BD253 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,7 +235,6 @@
 				B1EF430D24B46C5F009BE30C /* VerificationController.swift in Sources */,
 				B172340124C6C62300E35C9E /* UIColorExtensions.swift in Sources */,
 				B1EF430924B46C5F009BE30C /* AppDelegate.swift in Sources */,
-				B1D698B724EA86FF00AC4CA8 /* Environments.swift in Sources */,
 				B1EF430B24B46C5F009BE30C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +382,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J28V5J56X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VerificationSample",
+				);
 				INFOPLIST_FILE = VerificationSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,6 +405,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VerificationSample",
+				);
 				INFOPLIST_FILE = VerificationSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
