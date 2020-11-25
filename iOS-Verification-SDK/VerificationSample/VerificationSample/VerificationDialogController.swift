@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Verification
+import SinchVerificationSDK
 
 protocol VerificationDialogDelegate: class {
     func verificationDialog(_ verificationDialog: VerificationDialogController, didTypeVerificationCode verificationCode: String)

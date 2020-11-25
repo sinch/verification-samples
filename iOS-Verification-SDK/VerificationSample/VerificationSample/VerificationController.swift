@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Verification
+import SinchVerificationSDK
 
 class VerificationController: UIViewController {
     
