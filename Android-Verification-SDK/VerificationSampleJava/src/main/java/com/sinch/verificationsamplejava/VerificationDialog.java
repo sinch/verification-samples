@@ -24,6 +24,7 @@ import com.sinch.verification.core.initiation.response.InitiationListener;
 import com.sinch.verification.core.initiation.response.InitiationResponseData;
 import com.sinch.verification.core.internal.Verification;
 import com.sinch.verification.core.internal.VerificationMethodType;
+import com.sinch.verification.core.verification.VerificationEvent;
 import com.sinch.verification.core.verification.response.VerificationListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -88,7 +89,7 @@ public class VerificationDialog extends DialogFragment implements InitiationList
             dismiss();
         });
         verifyButton.setOnClickListener(v -> {
-            verification.verify(codeInputEditText.getText().toString());
+            verification.verify(codeInputEditText.getText().toString(), null);
         });
         adjustVisibilityOfManualVerificationField(codeInput);
         adjustVisibilityOfManualVerificationField(verifyButton);
@@ -117,6 +118,10 @@ public class VerificationDialog extends DialogFragment implements InitiationList
     @Override
     public void onVerificationFailed(@NotNull Throwable t) {
         showErrorWithMessage(t.getMessage());
+    }
+
+    @Override
+    public void onVerificationEvent(@NotNull VerificationEvent verificationEvent) {
     }
 
     private void showErrorWithMessage(String text) {

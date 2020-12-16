@@ -13,6 +13,7 @@ import com.sinch.verification.core.VerificationInitData
 import com.sinch.verification.core.initiation.response.InitiationListener
 import com.sinch.verification.core.initiation.response.InitiationResponseData
 import com.sinch.verification.core.internal.Verification
+import com.sinch.verification.core.verification.VerificationEvent
 import com.sinch.verification.core.verification.response.VerificationListener
 import kotlinx.android.synthetic.main.dialog_verification.*
 import java.util.*
@@ -94,6 +95,8 @@ class VerificationDialog : DialogFragment(), VerificationListener {
     override fun onVerificationFailed(t: Throwable) {
         showErrorWithMessage(t.message.orEmpty())
     }
+
+    override fun onVerificationEvent(event: VerificationEvent) { }
 
     private fun showErrorWithMessage(text: String) {
         progressBar.hide()
