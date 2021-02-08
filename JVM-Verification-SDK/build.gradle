@@ -11,7 +11,7 @@ repositories {
 }
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
-    implementation 'com.sinch.jvm.sdk.verification:library:1.0.7'
+    implementation 'com.sinch.jvm.sdk.verification:library:1.0.8'
 }
 compileKotlin {
     kotlinOptions.jvmTarget = '1.8'
