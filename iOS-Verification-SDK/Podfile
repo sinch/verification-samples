@@ -9,5 +9,5 @@ project 'VerificationSample/VerificationSample.xcodeproj'
 
 target 'VerificationSample' do
   project 'VerificationSample/VerificationSample.xcodeproj'
-  pod 'SinchVerificationSDK', '~> 3.0.1'
+  pod 'SinchVerificationSDK', '~> 3.1.1'
 end
