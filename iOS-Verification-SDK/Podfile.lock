@@ -1,33 +1,39 @@
 PODS:
-  - Alamofire (5.4.0)
-  - PhoneNumberKit (3.3.1):
-    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
-    - PhoneNumberKit/UIKit (= 3.3.1)
-  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
-  - PhoneNumberKit/UIKit (3.3.1):
+  - Alamofire (5.4.1)
+  - CocoaLumberjack/Core (3.7.0)
+  - CocoaLumberjack/Swift (3.7.0):
+    - CocoaLumberjack/Core
+  - PhoneNumberKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
+    - PhoneNumberKit/UIKit (= 3.3.3)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
+  - PhoneNumberKit/UIKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SinchVerificationSDK (3.0.1):
+  - SinchVerificationSDK (3.1.1):
     - Alamofire (~> 5.2)
+    - CocoaLumberjack/Swift (~> 3.7.0)
     - PhoneNumberKit (~> 3.1)
     - ReachabilitySwift
 
 DEPENDENCIES:
-  - SinchVerificationSDK (~> 3.0.1)
+  - SinchVerificationSDK (~> 3.1.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CocoaLumberjack
     - PhoneNumberKit
     - ReachabilitySwift
     - SinchVerificationSDK
 
 SPEC CHECKSUMS:
-  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
-  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
+  PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SinchVerificationSDK: 7737e0a39b25bb06b6a2ba41b78eabb3ce583b9d
+  SinchVerificationSDK: c7ab8ed7fff22851fe68feecf8b3f910b4ca1a7b
 
-PODFILE CHECKSUM: 6c1babb0cb5cdd619c8b4b0ed964828271dbdf27
+PODFILE CHECKSUM: 99790af2240967482a8f6ceab9d64d704d555eba
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
