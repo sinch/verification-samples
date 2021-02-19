@@ -62,7 +62,6 @@ class VerificationDialog : DialogFragment(), VerificationListener {
         verification = SmsVerificationMethod.Builder().config(
             SmsVerificationConfig.Builder().globalConfig(app.globalConfig)
                 .number(initData.number)
-                .appHash(AppSignatureHelper(app).appSignatures[0])
                 .custom(initData.custom)
                 .honourEarlyReject(initData.honourEarlyReject)
                 .reference(initData.reference)

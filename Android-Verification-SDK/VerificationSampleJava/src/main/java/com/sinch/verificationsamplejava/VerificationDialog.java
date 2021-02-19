@@ -81,7 +81,7 @@ public class VerificationDialog extends DialogFragment implements InitiationList
                         getInitDataFromBundle(),
                         this,
                         this
-                ), new AppSignatureHelper(getContext()).getAppSignatures().get(0)
+                )
         );
         verification.initiate();
         quitButton.setOnClickListener(v -> {

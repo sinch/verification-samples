@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import com.sinch.verification.all.BasicVerificationMethodBuilder
+import com.sinch.verification.all.BasicVerificationMethodBuilder.createVerification
 import com.sinch.verification.all.CommonVerificationInitializationParameters
 import com.sinch.verification.core.VerificationInitData
 import com.sinch.verification.core.initiation.response.InitiationListener
@@ -59,14 +59,14 @@ class VerificationDialog : DialogFragment(), VerificationListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         //Normally we would implement all the logic inside View Model but for simplicity we will keep it here.
-        verification = BasicVerificationMethodBuilder.createVerification(
+        AppSignatureHelper(app).appSignatures[0]
+        verification = createVerification(
             commonVerificationInitializationParameters = CommonVerificationInitializationParameters(
                 globalConfig = app.globalConfig,
                 verificationInitData = initData,
                 initiationListener = initListener,
                 verificationListener = this
-            ),
-            appHash = AppSignatureHelper(app).appSignatures[0]
+            )
         ).also { it.initiate() }
         verifyButton.setOnClickListener {
             verification.verify(codeInput.editText?.text.toString())
@@ -96,7 +96,7 @@ class VerificationDialog : DialogFragment(), VerificationListener {
         showErrorWithMessage(t.message.orEmpty())
     }
 
-    override fun onVerificationEvent(event: VerificationEvent) { }
+    override fun onVerificationEvent(event: VerificationEvent) {}
 
     private fun showErrorWithMessage(text: String) {
         progressBar.hide()
