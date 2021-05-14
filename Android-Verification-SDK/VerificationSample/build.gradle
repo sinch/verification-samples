@@ -51,9 +51,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "com.sinch.android.sdk.verification:verification-all:${Versions.defaultSinchSdk}"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.xSerialization}"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
     implementation "androidx.appcompat:appcompat:${Versions.appCompat}"
     implementation "androidx.core:core-ktx:${Versions.ktx}"
     implementation "com.google.android.material:material:${Versions.material}"
