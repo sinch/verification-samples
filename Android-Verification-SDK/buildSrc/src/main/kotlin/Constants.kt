@@ -1,6 +1,6 @@
 object Versions {
 
-    const val kotlin = "1.4.31"
+    const val kotlin = "1.5.20"
     const val gradleBuildTools = "4.0.0"
 
     const val appCompat = "1.1.0"
@@ -31,5 +31,5 @@ object Versions {
 
     const val dokka = "0.10.1"
 
-    const val defaultSinchSdk = "2.1.7"
+    const val defaultSinchSdk = "2.1.11"
 }
