@@ -2,16 +2,19 @@ package com.sinch.sinchverification
 
 import android.Manifest
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
+import com.sinch.sinchverification.databinding.ActivityMainBinding
 import com.sinch.verification.core.VerificationInitData
 import com.sinch.verification.core.internal.VerificationMethodType
 import com.sinch.verification.core.verification.VerificationLanguage
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     companion object {
         const val PERMISSION_REQUEST_CODE = 5
@@ -19,10 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     private val buttonToMethodMap by lazy {
         mapOf(
-            smsButton.id to VerificationMethodType.SMS,
-            flashcallButton.id to VerificationMethodType.FLASHCALL,
-            calloutButton.id to VerificationMethodType.CALLOUT,
-            seamlessButton.id to VerificationMethodType.SEAMLESS
+            binding.smsButton.id to VerificationMethodType.SMS,
+            binding.flashcallButton.id to VerificationMethodType.FLASHCALL,
+            binding.calloutButton.id to VerificationMethodType.CALLOUT,
+            binding.seamlessButton.id to VerificationMethodType.SEAMLESS
         )
     }
 
@@ -30,15 +33,16 @@ class MainActivity : AppCompatActivity() {
         get() =
             VerificationInitData(
                 usedMethod = selectedVerificationMethod,
-                number = phoneInput.editText?.text.toString(),
-                custom = customInput.editText?.text.toString(),
-                reference = referenceInput.editText?.text.toString(),
-                honourEarlyReject = honoursEarlyCheckbox.isChecked,
-                acceptedLanguages = acceptedLanguagesInput?.editText?.text.toString().toLocaleList()
+                number = binding.phoneInput.editText?.text.toString(),
+                custom = binding.customInput.editText?.text.toString(),
+                reference = binding.referenceInput.editText?.text.toString(),
+                honourEarlyReject = binding.honoursEarlyCheckbox.isChecked,
+                acceptedLanguages = binding.acceptedLanguagesInput?.editText?.text.toString()
+                    .toLocaleList()
             )
 
     private val selectedVerificationMethod: VerificationMethodType
-        get() = buttonToMethodMap[methodToggle.checkedButtonId]
+        get() = buttonToMethodMap[binding.methodToggle.checkedButtonId]
             ?: VerificationMethodType.SMS
 
     private val requestedPermissions: Array<String>
@@ -56,12 +60,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initButton.setOnClickListener {
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
+        binding.initButton.setOnClickListener {
             ActivityCompat.requestPermissions(this, requestedPermissions, PERMISSION_REQUEST_CODE)
         }
-        phoneInput.editText?.addTextChangedListener {
-            phoneInput.error = null
+        binding.phoneInput.editText?.addTextChangedListener {
+            binding.phoneInput.error = null
         }
     }
 
@@ -80,8 +85,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkFields() {
-        if (phoneInput.editText?.text.isNullOrEmpty()) {
-            phoneInput.error = getString(R.string.phoneEmptyError)
+        if (binding.phoneInput.editText?.text.isNullOrEmpty()) {
+            binding.phoneInput.error = getString(R.string.phoneEmptyError)
         } else {
             VerificationDialog.newInstance(initData)
                 .apply {

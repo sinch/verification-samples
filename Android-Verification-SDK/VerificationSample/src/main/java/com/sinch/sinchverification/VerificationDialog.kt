@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.sinch.sinchverification.databinding.DialogVerificationBinding
 import com.sinch.verification.all.BasicVerificationMethodBuilder.createVerification
 import com.sinch.verification.all.CommonVerificationInitializationParameters
 import com.sinch.verification.core.VerificationInitData
@@ -15,7 +16,6 @@ import com.sinch.verification.core.initiation.response.InitiationResponseData
 import com.sinch.verification.core.internal.Verification
 import com.sinch.verification.core.verification.VerificationEvent
 import com.sinch.verification.core.verification.response.VerificationListener
-import kotlinx.android.synthetic.main.dialog_verification.*
 import java.util.*
 
 class VerificationDialog : DialogFragment(), VerificationListener {
@@ -26,6 +26,12 @@ class VerificationDialog : DialogFragment(), VerificationListener {
             arguments = Bundle().apply { putParcelable(DATA_TAG, initData) }
         }
     }
+
+    private var _binding: DialogVerificationBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     private val app: VerificationSampleApp get() = activity?.application as VerificationSampleApp
     private val initData by lazy {
@@ -53,7 +59,8 @@ class VerificationDialog : DialogFragment(), VerificationListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dialog_verification, container, false)
+        _binding = DialogVerificationBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -68,27 +75,32 @@ class VerificationDialog : DialogFragment(), VerificationListener {
                 verificationListener = this
             )
         ).also { it.initiate() }
-        verifyButton.setOnClickListener {
-            verification.verify(codeInput.editText?.text.toString())
+        binding.verifyButton.setOnClickListener {
+            verification.verify(binding.codeInput.editText?.text.toString())
         }
-        quitButton.setOnClickListener {
+        binding.quitButton.setOnClickListener {
             verification.stop()
             dismiss()
         }
-        listOf(codeInput, verifyButton).forEach {
+        listOf(binding.codeInput, binding.verifyButton).forEach {
             it.visibility =
                 if (initData.usedMethod.allowsManualVerification) View.VISIBLE else View.GONE
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onVerified() {
-        progressBar.hide()
-        messageText.apply {
+        binding.progressBar.hide()
+        binding.messageText.apply {
             setTextColor(ContextCompat.getColor(app, R.color.green))
             text = getString(R.string.successfullyVerified)
-            quitButton.text = getString(R.string.close)
-            codeInput.visibility = View.GONE
-            verifyButton.visibility = View.GONE
+            binding.quitButton.text = getString(R.string.close)
+            binding.codeInput.visibility = View.GONE
+            binding.verifyButton.visibility = View.GONE
         }
     }
 
@@ -99,8 +111,8 @@ class VerificationDialog : DialogFragment(), VerificationListener {
     override fun onVerificationEvent(event: VerificationEvent) {}
 
     private fun showErrorWithMessage(text: String) {
-        progressBar.hide()
-        messageText.apply {
+        binding.progressBar.hide()
+        binding.messageText.apply {
             setTextColor(ContextCompat.getColor(app, R.color.red))
             this.text =
                 String.format(Locale.US, getString(R.string.verificationFailedPlaceholder), text)

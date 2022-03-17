@@ -2,15 +2,18 @@ package com.sinch.verification.smssample
 
 import android.Manifest
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import com.sinch.verification.core.VerificationInitData
 import com.sinch.verification.core.internal.VerificationMethodType
 import com.sinch.verification.core.verification.VerificationLanguage
-import kotlinx.android.synthetic.main.activity_main_sms.*
+import com.sinch.verification.smssample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     companion object {
         const val PERMISSION_REQUEST_CODE = 5
@@ -20,17 +23,18 @@ class MainActivity : AppCompatActivity() {
         get() =
             VerificationInitData(
                 usedMethod = VerificationMethodType.SMS,
-                number = phoneInput.editText?.text.toString(),
-                custom = customInput.editText?.text.toString(),
-                reference = referenceInput.editText?.text.toString(),
-                honourEarlyReject = honoursEarlyCheckbox.isChecked,
-                acceptedLanguages = acceptedLanguagesInput?.editText?.text.toString().toLocaleList()
+                number = binding.phoneInput.editText?.text.toString(),
+                custom = binding.customInput.editText?.text.toString(),
+                reference = binding.referenceInput.editText?.text.toString(),
+                honourEarlyReject = binding.honoursEarlyCheckbox.isChecked,
+                acceptedLanguages = binding.acceptedLanguagesInput?.editText?.text.toString().toLocaleList()
             )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_sms)
-        initButton.setOnClickListener {
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
+        binding.initButton.setOnClickListener {
             ActivityCompat.requestPermissions(
                 this, arrayOf(
                     Manifest.permission.READ_PHONE_STATE,
@@ -38,8 +42,8 @@ class MainActivity : AppCompatActivity() {
                 ), PERMISSION_REQUEST_CODE
             )
         }
-        phoneInput.editText?.addTextChangedListener {
-            phoneInput.error = null
+        binding.phoneInput.editText?.addTextChangedListener {
+            binding.phoneInput.error = null
         }
     }
 
@@ -53,8 +57,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkFields() {
-        if (phoneInput.editText?.text.isNullOrEmpty()) {
-            phoneInput.error = getString(R.string.phoneEmptyError)
+        if (binding.phoneInput.editText?.text.isNullOrEmpty()) {
+            binding.phoneInput.error = getString(R.string.phoneEmptyError)
         } else {
             VerificationDialog.newInstance(initData)
                 .apply {
