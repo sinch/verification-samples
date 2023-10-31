@@ -1,7 +1,7 @@
 object Versions {
 
-    const val kotlin = "1.5.20"
-    const val gradleBuildTools = "4.0.0"
+    const val kotlin = "1.8.0"
+    const val gradleBuildTools = "7.1.3"
 
     const val appCompat = "1.1.0"
     const val ktx = "1.3.0"
@@ -17,9 +17,9 @@ object Versions {
     const val mockk = "1.9.3.kotlin12"
 
     const val buildTools = "29.0.3"
-    const val compileSdk = 29
-    const val targetSdk = 29
-    const val minSdk = 21
+    const val compileSdk = 34
+    const val targetSdk = 34
+    const val minSdk = 23
 
     const val retrofit = "2.8.1"
     const val okhttp = "4.5.0"
@@ -31,5 +31,5 @@ object Versions {
 
     const val dokka = "0.10.1"
 
-    const val defaultSinchSdk = "2.1.11"
+    const val defaultSinchSdk = "2.7.0"
 }
